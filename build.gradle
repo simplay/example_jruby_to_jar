@@ -1,0 +1,22 @@
+buildscript {
+    repositories { jcenter() }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:[1.2.2,2.0)'
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.5.0'
+        classpath 'com.github.jruby-gradle:jruby-gradle-jar-plugin:1.5.0'
+    }
+}
+
+apply plugin: "com.github.jruby-gradle.jar"
+
+repositories { jcenter() }
+
+dependencies {
+    jrubyJar "rubygems:colorize:0.7.7+"
+    jrubyJar 'org.slf4j:slf4j-simple:1.7.12'
+}
+
+jrubyJar {
+    initScript "${projectDir}/entrypoint.rb"
+}
